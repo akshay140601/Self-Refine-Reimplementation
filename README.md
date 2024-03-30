@@ -20,7 +20,7 @@ In this assignment, our primary focus was on surveying language models specifica
 
   - Step1 (Construct yaml file): For evaluating runtime for PIE experiments, we need a yaml file that contains information about the dataset, the model outputs, and the reference file. Note that self-refine generates outputs in a slightly different format. While Self-Refine generates the outputs in an array (one version per refinement step), the evaluation requires the program to be present in a single column as a script.  src/pie/prep_for_pie_eval.py creates a single file where the output from the i^th step present in the attempt_i_code column. The following is the ourput for evaluating the initial output (y0)
 
-  '''
+'''
 inputs_outputs_basepath: "data/sample/generated_test_cases/generated_test_cases/"
 reference_file_path: "data/tasks/pie/ref.jsonl"
 num_problems_to_evaluate: -1
@@ -37,7 +37,7 @@ return_if_acc_below: 1.0
 cpu_number: 7
 output_report_file_path: "report/chatgpt/output.pie.jsonl.0.report"
 model_generated_outputs_path: "report/chatgpt/output4_changing_output.jsonl"
-  '''
+'''
   - Step 2: After constructing the yaml file, run the following command to generate the reports.
     '''
     python src/pie/run_eval.py --eval_config report/chatgpt/config.yaml.0
