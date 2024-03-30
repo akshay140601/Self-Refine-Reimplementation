@@ -18,7 +18,7 @@ In this assignment, our primary focus was on surveying language models specifica
   ## Instructions for evaluating runtime for PIE experiments
   From the self-refine outputs, create a flattened version of the outputs, and then use the PIE repo to evaluate the runtime and get a report. Parse the report using src/pie/pie_eval.py.
 
-1. Step1 (Construct yaml file): For evaluating runtime for PIE experiments, we need a yaml file that contains information about the dataset, the model outputs, and the reference file. Note that self-refine generates outputs in a slightly different format. While Self-Refine generates the outputs in an array (one version per refinement step), the evaluation requires the program to be present in a single column as a script.  src/pie/prep_for_pie_eval.py creates a single file where the output from the i^th step present in the attempt_i_code column. The following is the ourput for evaluating the initial output (y0)
+1. Step1 (Construct yaml file): For evaluating runtime for PIE experiments, we need a yaml file that contains information about the dataset, the model outputs, and the reference file. Note that self-refine generates outputs in a slightly different format. While Self-Refine generates the outputs in an array (one version per refinement step), the evaluation requires the program to be present in a single column as a script.  src/pie/prep_for_pie_eval.py creates a single file where the output from the i^th step present in the attempt_i_code column. The following is the ourput for evaluating the initial output (y0).
     '''
   inputs_outputs_basepath: "data/sample/generated_test_cases/generated_test_cases/"
   reference_file_path: "data/tasks/pie/ref.jsonl"
