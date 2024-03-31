@@ -16,9 +16,10 @@ In this assignment, our primary focus was on surveying language models specifica
   ```
 
   ## Instructions for evaluating runtime for PIE experiments
-  From the self-refine outputs, create a flattened version of the outputs, and then use the PIE repo to evaluate the runtime and get a report. Parse the report using src/pie/pie_eval.py.
+  From the self-refine outputs, create a flattened version of the outputs, and then use the src/pie/prep_for_pie_eval.py to get the flattened outputs.
+  Then, download the test cases required for evaluating the codes. It can be found [here](https://drive.google.com/file/d/1migwX4wpED0gDDxn7gS6q55vWeXIDgId/view)
 
-1. Step1 (Construct yaml file): For evaluating runtime for PIE experiments, we need a yaml file that contains information about the dataset, the model outputs, and the reference file. Note that self-refine generates outputs in a slightly different format. While Self-Refine generates the outputs in an array (one version per refinement step), the evaluation requires the program to be present in a single column as a script.  src/pie/prep_for_pie_eval.py creates a single file where the output from the i^th step present in the attempt_i_code column. The following is the ourput for evaluating the initial output (y0).
+1. Step1 (Construct yaml file): For evaluating runtime for PIE experiments, we need a yaml file that contains information about the dataset, the model outputs, and the reference file. Note that self-refine generates outputs in a slightly different format. While Self-Refine generates the outputs in an array (one version per refinement step), the evaluation requires the program to be present in a single column as a script.  src/pie/prep_for_pie_eval.py creates a single file where the output from the i^th step present in the attempt_i_code column. This produces a json file which is 'output4_changing_output.jsonl' in our case. The following is the output for evaluating the initial output (y0).
 ```
   inputs_outputs_basepath: "data/sample/generated_test_cases/generated_test_cases/"
   reference_file_path: "data/tasks/pie/ref.jsonl"
@@ -41,5 +42,5 @@ In this assignment, our primary focus was on surveying language models specifica
     ```
     python src/pie/run_eval.py --eval_config report/chatgpt/config.yaml.0
     ```
-    config.yaml.0 is the yaml file constructed above. If you run self-refine for 4 time-steps , you should create 4 yaml files and run this evaluation 4 times.
-3. Step 3: Run the src/pie/pie_eval.py to generate results.
+    config.yaml.0 is the yaml file constructed above. If you run self-refine for 4 time-steps, you should create 4 yaml files and run this evaluation 4 times.
+3. Step 3: Run the src/pie/pie_eval.py to generate results (number of codes optimized, speedup wrt input). Make sure to download 'R' software.
